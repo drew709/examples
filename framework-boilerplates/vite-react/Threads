@@ -1,0 +1,127 @@
+import React from "react";
+import { motion } from "framer-motion";
+import { Menu, X, Mail, Phone, MapPin } from "lucide-react";
+
+export default function StarterWebsite({
+  businessName = "Threads TN",
+  tagline = "We turn ideas into results.",
+  primaryColor = "bg-indigo-600",
+  logo = null,
+}) {
+  return (
+    <div className="min-h-screen font-sans text-slate-900 bg-white">
+      <header className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          {logo ? (
+            <img src={logo} alt={`${businessName} logo`} className="h-10 w-10 object-contain" />
+          ) : (
+            <div className="h-10 w-10 rounded-full bg-slate-200 flex items-center justify-center text-sm font-bold">{businessName.charAt(0)}</div>
+          )}
+          <div>
+            <div className="text-lg font-semibold">{businessName}</div>
+            <div className="text-xs text-slate-500">{tagline}</div>
+          </div>
+        </div>
+        <nav className="hidden md:flex gap-6 items-center text-sm">
+          <a href="#services" className="hover:underline">Services</a>
+          <a href="#about" className="hover:underline">About</a>
+          <a href="#testimonials" className="hover:underline">Testimonials</a>
+          <a href="#contact" className={`px-4 py-2 rounded-md text-white ${primaryColor}`}>Contact</a>
+        </nav>
+        <div className="md:hidden">
+          <button aria-label="menu" className="p-2 rounded-md border"><Menu size={18} /></button>
+        </div>
+      </header>
+
+      <main className="px-6">
+        <section className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center py-16">
+          <div>
+            <motion.h1 initial={{ y: 10, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="text-4xl md:text-5xl font-extrabold leading-tight">
+              Grow your brand with custom apparel and style from Threads TN
+            </motion.h1>
+            <p className="mt-6 text-lg text-slate-600">
+              Threads TN delivers high-quality, customized apparel and branding for teams, events, and businesses. Stand out with our premium designs.
+            </p>
+
+            <div className="mt-8 flex gap-4">
+              <a href="#contact" className={`inline-block px-6 py-3 rounded-md text-white ${primaryColor} font-medium`}>Get a free quote</a>
+              <a href="#services" className="inline-block px-6 py-3 rounded-md border text-sm">See services</a>
+            </div>
+
+            <div className="mt-8 grid grid-cols-2 gap-4 text-sm text-slate-600">
+              <div className="flex items-center gap-3">
+                <Phone size={18} /> <span>+1 (555) 123-4567</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail size={18} /> <span>hello@threadstn.com</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-xl overflow-hidden shadow-lg bg-gradient-to-tr from-slate-50 to-white p-6">
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=60" alt="custom apparel" className="w-full h-64 object-cover rounded-md" />
+          </div>
+        </section>
+
+        <section id="services" className="max-w-6xl mx-auto py-12">
+          <h2 className="text-2xl font-bold">Services</h2>
+          <p className="text-slate-600 mt-2">What Threads TN can do for you.</p>
+
+          <div className="mt-6 grid md:grid-cols-3 gap-6">
+            <article className="p-6 border rounded-lg">
+              <h3 className="font-semibold">Custom Apparel</h3>
+              <p className="mt-2 text-sm text-slate-600">High-quality t-shirts, hoodies, and uniforms for your brand or event.</p>
+            </article>
+            <article className="p-6 border rounded-lg">
+              <h3 className="font-semibold">Embroidery & Printing</h3>
+              <p className="mt-2 text-sm text-slate-600">Professional embroidery and screen printing for sharp, lasting designs.</p>
+            </article>
+            <article className="p-6 border rounded-lg">
+              <h3 className="font-semibold">Brand Merch & Design</h3>
+              <p className="mt-2 text-sm text-slate-600">Create branded merchandise that helps your business or team stand out.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="about" className="max-w-4xl mx-auto py-12">
+          <h2 className="text-2xl font-bold">About Threads TN</h2>
+          <p className="mt-2 text-slate-600">Based in Tennessee, Threads TN specializes in premium custom apparel and design solutions for businesses, schools, and events.</p>
+        </section>
+
+        <section id="testimonials" className="max-w-6xl mx-auto py-12">
+          <h2 className="text-2xl font-bold">Testimonials</h2>
+          <div className="mt-6 grid md:grid-cols-3 gap-6">
+            <blockquote className="p-6 border rounded-lg italic">“Our uniforms from Threads TN are top-notch! Highly recommend.” — Local Business</blockquote>
+            <blockquote className="p-6 border rounded-lg italic">“The team shirts were a hit — great quality and fast delivery!” — Event Organizer</blockquote>
+            <blockquote className="p-6 border rounded-lg italic">“Excellent service and craftsmanship on every order.” — Repeat Customer</blockquote>
+          </div>
+        </section>
+
+        <section id="contact" className="max-w-3xl mx-auto py-12">
+          <h2 className="text-2xl font-bold">Contact Threads TN</h2>
+          <p className="text-slate-600 mt-2">Let’s talk about your next project or custom order.</p>
+
+          <form className="mt-6 grid gap-4" onSubmit={(e) => { e.preventDefault(); alert('Replace this with your form handler.'); }}>
+            <input className="border p-3 rounded" placeholder="Full name" required />
+            <input className="border p-3 rounded" placeholder="Email" type="email" required />
+            <input className="border p-3 rounded" placeholder="Subject" />
+            <textarea className="border p-3 rounded h-32" placeholder="Message" required />
+            <div className="flex items-center gap-4">
+              <button type="submit" className={`px-6 py-3 rounded-md text-white ${primaryColor}`}>Send message</button>
+              <a href="mailto:hello@threadstn.com" className="flex items-center gap-2 text-sm text-slate-600"><Mail size={16}/> Email us</a>
+            </div>
+          </form>
+        </section>
+      </main>
+
+      <footer className="border-t mt-12 py-6">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="text-sm text-slate-600">© {new Date().getFullYear()} Threads TN. All rights reserved.</div>
+          <div className="text-sm text-slate-600 flex items-center gap-4">
+            <MapPin size={14}/> Tennessee, USA
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
